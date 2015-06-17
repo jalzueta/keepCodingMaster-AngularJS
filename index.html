@@ -1,14 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="jeviteca">
 <head lang="en">
     <meta charset="UTF-8" />
-    <title></title>
-    <script src="vendor/angular.min.js" ></script>
-    <!-- script src="vendor/angular-route.min.js" ></script -->
-    <!-- script src="vendor/angular-route-segment.min.js" ></script -->
+    <title>Jeviteca</title>
+    <link rel="stylesheet" href="styles/css/bootstrap.min.css">
+    <script src="vendor/angular.min.js"></script>
+    <script src="vendor/angular-route.min.js"></script>
+    <script src="vendor/angular-route-segment.min.js"></script>
+    <script src="vendor/angular-locale_es-es.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/NavegacionCtrl.js"></script>
+    <script src="scripts/controllers/AlbumesCtrl.js"></script>
+    <script src="scripts/controllers/BandasCtrl.js"></script>
+    <script src="scripts/controllers/GenerosCtrl.js"></script>
  </head>
  <body>
+    <div class="container">
 
+        <header>
+            <h1>Jeviteca</h1>
+            <h3>Práctica de HTML5, CSS3 & AngularJS</h3>
+        </header>
+        <nav ng-controller="NavegacionCtrl">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ng-class="{ 'active' : rutaEsAlbumes() }">
+                    <a href="#/albumes">Álbumes</a>
+                </li>
+                <li role="presentation" ng-class="{ 'active' : rutaEsBandas() }">
+                    <a href="#/bandas">Bandas</a>
+                </li>
+                <li role="presentation" ng-class="{ 'active' : rutaEsGeneros() }">
+                    <a href="#/generos">Géneros</a>
+                </li>
+            </ul>
+        </nav>
+        <section app-view-segment="0"></section>
+    </div>
  </body>
  </html>
