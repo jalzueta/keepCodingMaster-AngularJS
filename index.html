@@ -9,10 +9,15 @@
     <script src="vendor/angular-route-segment.min.js"></script>
     <script src="vendor/angular-locale_es-es.js"></script>
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/NavegacionCtrl.js"></script>
-    <script src="scripts/controllers/AlbumesCtrl.js"></script>
-    <script src="scripts/controllers/BandasCtrl.js"></script>
-    <script src="scripts/controllers/GenerosCtrl.js"></script>
+    <script src="scripts/controllers/TabNavigationCtrl.js"></script>
+    <script src="scripts/controllers/AlbumsCtrl.js"></script>
+    <script src="scripts/controllers/BandsCtrl.js"></script>
+    <script src="scripts/controllers/GenresCtrl.js"></script>
+    <script src="scripts/services/AlbumsProvider.js"></script>
+    <script src="scripts/services/BandsProvider.js"></script>
+    <script src="scripts/services/GenresProvider.js"></script>
+    <script src="scripts/values/Settings.js"></script>
+    <script src="scripts/directives/AlbumTableElement.js"></script>
  </head>
  <body>
     <div class="container">
@@ -21,16 +26,16 @@
             <h1>Jeviteca</h1>
             <h3>Práctica de HTML5, CSS3 & AngularJS</h3>
         </header>
-        <nav ng-controller="NavegacionCtrl">
+        <nav ng-controller="TabNavigationCtrl">
             <ul class="nav nav-tabs">
-                <li role="presentation" ng-class="{ 'active' : rutaEsAlbumes() }">
-                    <a href="#/albumes">Álbumes</a>
+                <li role="presentation" ng-class="{ 'active' : pathIsAlbums() }">
+                    <a href="#/albums">Álbumes</a>
                 </li>
-                <li role="presentation" ng-class="{ 'active' : rutaEsBandas() }">
-                    <a href="#/bandas">Bandas</a>
+                <li role="presentation" ng-class="{ 'active' : pathIsBands() }">
+                    <a href="#/bands">Bandas</a>
                 </li>
-                <li role="presentation" ng-class="{ 'active' : rutaEsGeneros() }">
-                    <a href="#/generos">Géneros</a>
+                <li role="presentation" ng-class="{ 'active' : pathIsGenres() }">
+                    <a href="#/genres">Géneros</a>
                 </li>
             </ul>
         </nav>

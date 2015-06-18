@@ -5,26 +5,41 @@ angular
     .module( "jeviteca" )
     .config( ["$routeSegmentProvider", "$routeProvider", function ( $routeSegmentProvider, $routeProvider ) {
 
-        $routeSegmentProvider.when("/albumes", "albumes");
-        $routeSegmentProvider.when("/bandas", "bandas");
-        $routeSegmentProvider.when("/generos", "generos");
+        $routeSegmentProvider.when("/albums", "albums");
+        $routeSegmentProvider.when("/bands", "bands");
+        $routeSegmentProvider.when("/genres", "genres");
 
-        $routeSegmentProvider.segment("albumes", {
-            controller: "AlbumesCtrl",
-            templateUrl: "views/AlbumesView.html"
+        $routeSegmentProvider.segment("albums", {
+            controller: "AlbumsCtrl",
+            templateUrl: "views/AlbumsView.html",
+            resolve: {
+                Albums: ["AlbumsProvider", function( AlbumsProvider ){
+                    return AlbumsProvider.getAlbums();
+                }]
+            }
         });
 
-        $routeSegmentProvider.segment("bandas", {
-            controller: "BandasCtrl",
-            templateUrl: "views/BandasView.html"
+        $routeSegmentProvider.segment("bands", {
+            controller: "BandsCtrl",
+            templateUrl: "views/BandsView.html",
+            resolve: {
+                Bands: ["BandsProvider", function( BandsProvider ){
+                    return BandsProvider.getBands();
+                }]
+            }
         });
 
-        $routeSegmentProvider.segment("generos", {
-            controller: "GenerosCtrl",
-            templateUrl: "views/GenerosView.html"
+        $routeSegmentProvider.segment("genres", {
+            controller: "GenresCtrl",
+            templateUrl: "views/GenresView.html",
+            resolve: {
+                Genres: ["GenresProvider", function ( GenresProvider ) {
+                    return GenresProvider.getGenres();
+                }]
+            }
         });
 
         $routeProvider.otherwise({
-            redirectTo: "/albumes"
+            redirectTo: "/albums"
         });
     }] );
