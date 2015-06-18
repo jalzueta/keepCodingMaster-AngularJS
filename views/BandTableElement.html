@@ -1,0 +1,11 @@
+<tr>
+    <td>
+        <a ng-href="#bands/{{ ::model.id }}/detail">{{ ::model.name }}</a>
+    </td>
+    <td>{{ ::model.origin }}</td>
+    <td>
+        <ul>
+            <li ng-repeat="member in model.members">{{ ::member.name }} ({{ member.instruments | instrumentsToString}})</li>
+        </ul>
+    </td>
+</tr>

@@ -4,8 +4,9 @@
 
 angular
     .module("jeviteca")
-    .controller("BandsCtrl", ["$scope", function($scope){
+    .controller("BandsCtrl", ["$scope", "Bands", function( $scope, Bands ){
 
-       /* $scope.albums = Bands.data;*/
+        $scope.bands = Bands.data;
 
     }]);
+

@@ -4,6 +4,8 @@
 
 angular
     .module("jeviteca")
-    .controller("GenerosCtrl", ["$scope", function($scope){
+    .controller("GenresCtrl", ["$scope", "Genres", function( $scope, Genres ){
 
-    }])
+        $scope.genres = Genres.data;
+
+    }]);
