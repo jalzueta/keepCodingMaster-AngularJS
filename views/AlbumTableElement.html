@@ -1,6 +1,17 @@
 <tr>
     <td>
-        <a ng-href="#albums/{{ ::model.id }}/detail">{{ ::model.title }}</a>
+        <img class="album-thumbnail" ng-src="img/{{ ::model.image }}" ng-alt="{{ ::model.title }}"/>
     </td>
-    <td>{{ ::model.year | launchedOn}}</td>
+    <td>
+        <div class="album-title"><a ng-href="#albums/{{ ::model.id }}/detail">{{ ::model.title }}</a></div>
+        <span>{{ ::model.band.name }}</span>
+    </td>
+    <td>
+        <div class="album-launching-date">{{ ::model.year | launchedOn}}</div>
+    </td>
+    <td>
+        <div class="album-favorite">
+            <favoritos id-entity="model.id" data-type="album"></favoritos>
+        </div>
+    </td>
 </tr>

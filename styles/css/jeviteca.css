@@ -1,0 +1,36 @@
+.album-thumbnail{
+    width: 60px;
+    height: 60px;
+}
+.album-title{
+    margin-top: 10px;
+}
+.album-launching-date{
+    margin-top: 20px;
+}
+.album-favorite{
+    margin-top: 20px;
+}
+
+
+.band-title{
+    /*display: table-cell;
+    vertical-align: middle;*/
+}
+.band-origin{
+    /*margin-top: 35px;*/
+}
+.band-members{
+    margin-top: 5px;
+}
+.band-favorite{
+    /*margin-top: 35px;*/
+}
+
+
+.genre-title{
+    margin-top: 5px;
+}
+.genre-favorite{
+    margin-top: 5px;
+}

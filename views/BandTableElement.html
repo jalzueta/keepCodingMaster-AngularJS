@@ -1,11 +1,24 @@
 <tr>
     <td>
-        <a ng-href="#bands/{{ ::model.id }}/detail">{{ ::model.name }}</a>
+        <div class="band-title">
+            <a ng-href="#bands/{{ ::model.id }}/detail">{{ ::model.name }}</a>
+        </div>
     </td>
-    <td>{{ ::model.origin }}</td>
     <td>
-        <ul>
-            <li ng-repeat="member in model.members">{{ ::member.name }} ({{ member.instruments | instrumentsToString}})</li>
+        <div class="band-origin">
+            {{ ::model.origin }}
+        </div>
+    </td>
+    <td>
+        <ul class="band-members">
+            <li ng-repeat="member in model.members">{{ ::member.name }} ({{ member.instruments |
+                instrumentsToString}})
+            </li>
         </ul>
+    </td>
+    <td>
+        <div class="band-favorite">
+            <favoritos id-entity="model.id" name-entity="model.name" data-type="band"></favoritos>
+        </div>
     </td>
 </tr>

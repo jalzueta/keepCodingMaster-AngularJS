@@ -1,5 +1,12 @@
 <tr>
     <td>
-        <a ng-href="#genres/{{ ::model.id }}/detail">{{ ::model.name }}</a>
+        <div class="genre-title">
+            <a ng-href="#genres/{{ ::model.id }}/detail">{{ ::model.name }}</a>
+        </div>
+    </td>
+    <td>
+        <div class="genre-favorite">
+            <favoritos id-entity="model.id" name-entity="model.name" data-type="genre"></favoritos>
+        </div>
     </td>
 </tr>
