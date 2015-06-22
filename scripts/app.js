@@ -9,6 +9,7 @@ angular
         $routeSegmentProvider.when("/bands", "bands");
         $routeSegmentProvider.when("/genres", "genres");
         $routeSegmentProvider.when("/albums/:id/detail", "album_detail");
+        $routeSegmentProvider.when("/bands/:id/detail", "band_detail");
 
         $routeSegmentProvider.segment("albums", {
             controller: "AlbumsCtrl",
@@ -42,13 +43,13 @@ angular
 
         $routeSegmentProvider.segment("album_detail", {
             controller: "AlbumDetailCtrl",
-            templateUrl: "views/AlbumDetailView.html",
-            /*resolve: {
-                Album: ["ApiService", "$routeParams", function(ApiService, $routeParams){
-                    return ApiService.getData("movie/" + $routeParams.id);
-                }]
-            }*/
+            templateUrl: "views/AlbumDetailView.html"
         });
+
+        /*$routeSegmentProvider.segment("band_detail", {
+            controller: "BandDetailCtrl",
+            templateUrl: "views/BandDetailView.html"
+        });*/
 
         $routeProvider.otherwise({
             redirectTo: "/albums"

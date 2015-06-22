@@ -3,9 +3,11 @@
  */
 angular
     .module("jeviteca")
-    .controller("AlbumDetailCtrl", ["$scope", "ApiService", "Settings", "$routeParams", function( $scope, ApiService, Settings, $routeParams ){
-        ApiService.getFilteredData(Settings.albumsUrl, {id: parseInt($routeParams.id)}).then(
+    .controller("BandDetailCtrl", ["$scope", "ApiService", "Settings", function( $scope, ApiService, Settings ){
+
+        ApiService.getFilteredData(Settings.bandsUrl, {'id': parseInt($routeParams.id)}).then(
             function (data) {
+                debugger
                 if (Object.prototype.toString.call( data ) === '[object Array]'){
                     data = data[0];
                 }
