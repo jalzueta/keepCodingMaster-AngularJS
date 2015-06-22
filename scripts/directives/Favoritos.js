@@ -3,7 +3,7 @@
  */
 angular
     .module("jeviteca")
-    .directive("favoritos", function () {
+    .directive("favoritos", ["StorageService", function (StorageService) {
         return {
             restrict: "AE",
             replace: true,
@@ -16,16 +16,31 @@ angular
             link: function(scope) {
 
                 scope.isFavorite = function () {
-                    var favorite = localStorage.getItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
-                    return favorite === "true";
+                    return StorageService.isFavorite( scope.dataType, (scope.idEntity || scope.nameEntity) );
+
+                    /*if (typeof(Storage) !== "undefined") {
+                        var favorite = localStorage.getItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
+                        return favorite === "true";
+                    }*/
                 };
                 scope.setFavorite = function() {
-                    localStorage.setItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity), "true" );
+                    StorageService.setFavorite( scope.dataType, (scope.idEntity || scope.nameEntity) );
+                   /* if (typeof(Storage) !== "undefined") {
+                        localStorage.setItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity), "true" );
+                    }*/
                 };
 
                 scope.removeFromFavorites = function() {
-                    localStorage.removeItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
+                    StorageService.removeFavorite( scope.dataType, (scope.idEntity || scope.nameEntity) );
+                    /*if (typeof(Storage) !== "undefined") {
+                        localStorage.removeItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
+                    }*/
                 };
+
+                scope.storagePermitted = function() {
+                    /*return true;*/
+                    return typeof(Storage) !== "undefined";
+                }
             }
         };
-    });
+    }]);

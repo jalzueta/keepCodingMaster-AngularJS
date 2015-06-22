@@ -1,5 +1,5 @@
 
-<span>
+<span ng-show="storagePermitted()">
     <span ng-click="removeFromFavorites()" ng-show="isFavorite()" class="glyphicon glyphicon-star"></span>
     <span ng-click="setFavorite()" ng-hide="isFavorite()" class="glyphicon glyphicon-star-empty"></span>
 </span>
