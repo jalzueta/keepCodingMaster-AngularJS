@@ -3,8 +3,18 @@
  */
 angular
     .module("jeviteca")
-    .controller("AlbumDetailCtrl", ["$scope", "Album", function($scope, Album){
+    .controller("AlbumDetailCtrl", ["$scope", "ApiService", "Settings", function( $scope, ApiService, Settings ){
 
-        $scope.album = Album.data;
+        ApiService.getFilteredData(Settings.albumsUrl, {"id": 1}).then(
+            function (data) {
+                debugger
+                if (Object.prototype.toString.call( data ) === '[object Array]'){
+                    data = data[0];
+                }
+                $scope.album = data;
+            },
+            function (error) {
+                console.log('Ha ocurrido un error');
+            });
 
     }]);

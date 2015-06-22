@@ -8,13 +8,14 @@ angular
         $routeSegmentProvider.when("/albums", "albums");
         $routeSegmentProvider.when("/bands", "bands");
         $routeSegmentProvider.when("/genres", "genres");
+        $routeSegmentProvider.when("/albums/:id/detail", "album_detail");
 
         $routeSegmentProvider.segment("albums", {
             controller: "AlbumsCtrl",
             templateUrl: "views/AlbumsView.html",
             resolve: {
-                Albums: ["DataProvider", "Settings", function( AlbumsProvider, Settings ){
-                    return AlbumsProvider.getData(Settings.albumsUrl);
+                Albums: ["ApiService", "Settings", function( ApiService, Settings ){
+                    return ApiService.getData(Settings.albumsUrl);
                 }]
             }
         });
@@ -23,8 +24,8 @@ angular
             controller: "BandsCtrl",
             templateUrl: "views/BandsView.html",
             resolve: {
-                Bands: ["DataProvider", "Settings", function( AlbumsProvider, Settings ){
-                    return AlbumsProvider.getData(Settings.bandsUrl);
+                Bands: ["ApiService", "Settings", function( ApiService, Settings ){
+                    return ApiService.getData(Settings.bandsUrl);
                 }]
             }
         });
@@ -33,41 +34,21 @@ angular
             controller: "GenresCtrl",
             templateUrl: "views/GenresView.html",
             resolve: {
-                Genres: ["DataProvider", "Settings", function( AlbumsProvider, Settings ){
-                    return AlbumsProvider.getData(Settings.genresUrl);
+                Genres: ["ApiService", "Settings", function( ApiService, Settings ){
+                    return ApiService.getData(Settings.genresUrl);
                 }]
             }
         });
 
-        /*$routeSegmentProvider.segment("albums", {
-            controller: "AlbumsCtrl",
-            templateUrl: "views/AlbumsView.html",
-            resolve: {
-                Albums: ["AlbumsProvider", function( AlbumsProvider ){
-                    return AlbumsProvider.getAlbums();
+        $routeSegmentProvider.segment("album_detail", {
+            controller: "AlbumDetailCtrl",
+            templateUrl: "views/AlbumDetailView.html",
+            /*resolve: {
+                Album: ["ApiService", "$routeParams", function(ApiService, $routeParams){
+                    return ApiService.getData("movie/" + $routeParams.id);
                 }]
-            }
+            }*/
         });
-
-        $routeSegmentProvider.segment("bands", {
-            controller: "BandsCtrl",
-            templateUrl: "views/BandsView.html",
-            resolve: {
-                Bands: ["BandsProvider", function( BandsProvider ){
-                    return BandsProvider.getBands();
-                }]
-            }
-        });
-
-        $routeSegmentProvider.segment("genres", {
-            controller: "GenresCtrl",
-            templateUrl: "views/GenresView.html",
-            resolve: {
-                Genres: ["GenresProvider", function ( GenresProvider ) {
-                    return GenresProvider.getGenres();
-                }]
-            }
-        });*/
 
         $routeProvider.otherwise({
             redirectTo: "/albums"
