@@ -12,11 +12,11 @@ angular
                 nameEntity: "=",
                 dataType: "="
             },
-            templateUrl: "views/FavoritosView.html",
+            templateUrl: "views/FavoritesView.html",
             link: function(scope) {
 
                 scope.isFavorite = function () {
-                    return StorageService.isFavorite( scope.dataType, (scope.idEntity || scope.nameEntity) );
+                    return StorageService.isFavorite( scope.dataType, (scope.idEntity || scope.nameEntity).toString() );
 
                     /*if (typeof(Storage) !== "undefined") {
                         var favorite = localStorage.getItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
@@ -24,14 +24,14 @@ angular
                     }*/
                 };
                 scope.setFavorite = function() {
-                    StorageService.setFavorite( scope.dataType, (scope.idEntity || scope.nameEntity) );
+                    StorageService.setFavorite( scope.dataType, (scope.idEntity || scope.nameEntity).toString() );
                    /* if (typeof(Storage) !== "undefined") {
                         localStorage.setItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity), "true" );
                     }*/
                 };
 
                 scope.removeFromFavorites = function() {
-                    StorageService.removeFavorite( scope.dataType, (scope.idEntity || scope.nameEntity) );
+                    StorageService.removeFavorite( scope.dataType, (scope.idEntity || scope.nameEntity).toString() );
                     /*if (typeof(Storage) !== "undefined") {
                         localStorage.removeItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
                     }*/
