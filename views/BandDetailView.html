@@ -2,10 +2,8 @@
 
     <h3>
         <span>{{ ::band.name }}</span>
-        <span class="right-aligned">
-            <favoritos id-entity="band.id" name-entity="band.name" storage-key="'bands'"></favoritos>
-            <button type="button" class="btn btn-default">Wikipedia</button>
-        </span>
+        <favoritos id-entity="band.id" name-entity="band.name" storage-key="'bands'"></favoritos>
+        <button type="button" class="btn btn-default wiki-button" ng-click="openWikiPage()">Wikipedia</button>
     </h3>
 
     <h5>Origen: {{ ::band.origin }}</h5>

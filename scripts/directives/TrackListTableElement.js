@@ -14,7 +14,6 @@ angular
             },
             link: function (scope) {
                 scope.openVideoClip = function(){
-                    debugger
                     var url = UrlUtilsService.getYouTubeLink(scope.bandName, scope.trackName);
                     $window.open(url, '_blank');
                 };
