@@ -1,7 +1,13 @@
 <tr>
     <td>
         <div class="genre-title">
-            <a ng-href="#genres/{{ ::model.id }}/detail">{{ ::model.name }}</a>
+            <a ng-href="#genres/{{ ::model.name }}/detail">{{ ::model.name }}</a>
+        </div>
+    </td>
+    <td>
+        <div class="genre-title">
+            <span class="badge">{{ ::model.albums.length }}</span>
+            <span class="list-number-of-albums-subtitle">álbumes</span>
         </div>
     </td>
     <td>

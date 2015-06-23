@@ -1,20 +1,14 @@
 <tr>
     <td>
         <div class="band-title">
-            <a ng-href="#bands/{{ ::model.id }}/detail">{{ ::model.name }}</a>
+            <a ng-href="#bands/{{ ::model.name }}/detail">{{ ::model.name }}</a>
         </div>
     </td>
     <td>
-        <div class="band-origin">
-            {{ ::model.origin }}
+        <div class="band-albums">
+            <span class="badge">{{ ::model.albums.length }}</span>
+            <span class="list-number-of-albums-subtitle">álbumes</span>
         </div>
-    </td>
-    <td>
-        <ul class="band-members">
-            <li ng-repeat="member in model.members">{{ ::member.name }} ({{ member.instruments |
-                instrumentsToString}})
-            </li>
-        </ul>
     </td>
     <td>
         <div class="band-favorite">

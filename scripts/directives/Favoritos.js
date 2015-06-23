@@ -16,25 +16,22 @@ angular
             link: function(scope) {
 
                 scope.isFavorite = function () {
-                    return StorageService.isFavorite( scope.dataType, (scope.idEntity || scope.nameEntity).toString() );
-
-                    /*if (typeof(Storage) !== "undefined") {
-                        var favorite = localStorage.getItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
-                        return favorite === "true";
-                    }*/
+                    if(this.storagePermitted()){
+                        return StorageService.isFavorite( scope.dataType, (scope.idEntity || scope.nameEntity || "").toString() );
+                    } else{
+                        return false;
+                    }
                 };
                 scope.setFavorite = function() {
-                    StorageService.setFavorite( scope.dataType, (scope.idEntity || scope.nameEntity).toString() );
-                   /* if (typeof(Storage) !== "undefined") {
-                        localStorage.setItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity), "true" );
-                    }*/
+                    if(this.storagePermitted()){
+                        StorageService.setFavorite( scope.dataType, (scope.idEntity || scope.nameEntity || "").toString() );
+                    }
                 };
 
                 scope.removeFromFavorites = function() {
-                    StorageService.removeFavorite( scope.dataType, (scope.idEntity || scope.nameEntity).toString() );
-                    /*if (typeof(Storage) !== "undefined") {
-                        localStorage.removeItem( scope.dataType + "_" + (scope.idEntity || scope.nameEntity) );
-                    }*/
+                    if(this.storagePermitted()){
+                        StorageService.removeFavorite( scope.dataType, (scope.idEntity || scope.nameEntity || "").toString() );
+                    }
                 };
 
                 scope.storagePermitted = function() {

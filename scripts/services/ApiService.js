@@ -11,6 +11,7 @@ angular
         this.getFilteredData = function ( url, searchString ) {
             var deferred = $q.defer();
             $http.get(url).then(function (data) {
+
                 if(searchString){
                     var filteredData = $filter('filter')(data.data,searchString,true);
                     deferred.resolve(filteredData);

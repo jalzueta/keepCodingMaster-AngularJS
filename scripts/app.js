@@ -9,7 +9,8 @@ angular
         $routeSegmentProvider.when("/bands", "bands");
         $routeSegmentProvider.when("/genres", "genres");
         $routeSegmentProvider.when("/albums/:id/detail", "album_detail");
-        $routeSegmentProvider.when("/bands/:id/detail", "band_detail");
+        $routeSegmentProvider.when("/bands/:name/detail", "band_detail");
+        $routeSegmentProvider.when("/genres/:name/detail", "genre_detail");
 
         $routeSegmentProvider.segment("albums", {
             controller: "AlbumsCtrl",
@@ -46,10 +47,15 @@ angular
             templateUrl: "views/AlbumDetailView.html"
         });
 
-        /*$routeSegmentProvider.segment("band_detail", {
+        $routeSegmentProvider.segment("band_detail", {
             controller: "BandDetailCtrl",
             templateUrl: "views/BandDetailView.html"
-        });*/
+        });
+
+        $routeSegmentProvider.segment("genre_detail", {
+            controller: "GenreDetailCtrl",
+            templateUrl: "views/GenreDetailView.html"
+        });
 
         $routeProvider.otherwise({
             redirectTo: "/albums"

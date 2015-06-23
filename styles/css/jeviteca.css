@@ -1,15 +1,62 @@
+
+.bold{
+    font-weight: bold;
+}
+.list-number-of-albums-subtitle{
+    color: #777;
+    font-size: small;
+    margin-left: 5px;
+}
+.detail-favorite{
+    margin-left: 15px;
+    top: 3px;
+}
+#album-list-panel{
+    margin: 0px;
+    margin-top: 20px;
+}
+#album-list-panel-body{
+    padding: 0px;
+}
+.album-list-table{
+    margin: 0px;
+}
 .album-thumbnail{
-    width: 60px;
+    width: 70px;
     max-height: auto;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
 }
 .album-title{
-    margin-top: 10px;
+    margin-top: 15px;
 }
 .album-launching-date{
-    margin-top: 20px;
+    margin-top: 25px;
 }
 .album-favorite{
-    margin-top: 20px;
+    margin-top: 25px;
+}
+.album-front{
+    float: left;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+.album-track-list{
+    float: left;
+    margin-left: 30px;
 }
 
 
@@ -25,6 +72,15 @@
 }
 .band-favorite{
     /*margin-top: 35px;*/
+}
+.band-detail-album-title{
+    margin-top: 3px;
+}
+.band-detail-album-genre{
+    margin-top: 3px;
+}
+.band-detail-album-favorite{
+    margin-top: 5px;
 }
 
 
