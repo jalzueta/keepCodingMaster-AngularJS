@@ -3,15 +3,15 @@
  */
 angular
     .module("jeviteca")
-    .service("UrlUtilsService", function () {
+    .service("UrlUtilsService", ["Settings", function (Settings) {
 
         this.getWikipediaLink = function( bandName ) {
             var query = encodeURIComponent( bandName );
-            return "https://es.wikipedia.org/wiki/Special:Search?search=" + query;
+            return Settings.wikiBaseUrl + query;
         },
 
         this.getYouTubeLink = function ( bandName, trackName ) {
             var query = encodeURIComponent(( bandName + " " + trackName ).toLowerCase());
-            return "https://www.youtube.com/results?search_query=" + query;
+            return Settings.youtubeBaseUrl + query;
         };
-    });
+    }]);

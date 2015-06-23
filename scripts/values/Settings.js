@@ -6,5 +6,7 @@ angular
     .value("Settings", {
         "albumsUrl": "data/albums.json",
         "bandsUrl": "data/bands.json",
-        "genresUrl": "data/genres.json"
+        "genresUrl": "data/genres.json",
+        "wikiBaseUrl": "https://es.wikipedia.org/wiki/Special:Search?search=",
+        "youtubeBaseUrl": "https://www.youtube.com/results?search_query="
     });
