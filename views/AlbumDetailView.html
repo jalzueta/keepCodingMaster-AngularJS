@@ -2,7 +2,7 @@
 
     <h3>
         <span>{{ ::album.title }} ({{ ::album.year }})</span>
-        <favoritos id-entity="album.id" name-entity="album.name" data-type="album"></favoritos>
+        <favoritos id-entity="album.id" name-entity="album.name" storage-key="'albums'"></favoritos>
     </h3>
     <div class="well">
         <p>Banda: <span class="bold"><a ng-href="#bands/{{ ::album.band.name }}/detail">{{ ::album.band.name }}</a></span></p>
@@ -11,12 +11,32 @@
 
     <img class="album-front" ng-src="img/{{ ::album.image }}" ng-alt="{{ ::album.title }}"/>
 
-    <div class="well album-track-list">
+    <div id="album-list-panel" class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Tracklist</h4>
+        </div>
+        <div id="album-list-panel-body" class="panel-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr ng-repeat="track in album.tracklist">
+                    <td>
+                        <div>{{ ::track }}</div>
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-play-circle" ng-click="openVideoClip"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--<div class="well album-track-list">
         <p class="bold">Tracklist:</p>
-        <ol>
-            <li ng-repeat="track in album.tracklist">{{ ::track }}
+        <ol class="list-group">
+            <li class="list-group-item" ng-repeat="track in album.tracklist">{{ ::track }}
             </li>
         </ol>
-    </div>
+    </div>-->
 
 </article>

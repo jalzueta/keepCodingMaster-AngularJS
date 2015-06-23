@@ -10,27 +10,30 @@ angular
             scope: {
                 idEntity: "=",
                 nameEntity: "=",
-                dataType: "="
+                storageKey: "="
             },
             templateUrl: "views/FavoritesView.html",
             link: function(scope) {
 
                 scope.isFavorite = function () {
+                    debugger
                     if(this.storagePermitted()){
-                        return StorageService.isFavorite( scope.dataType, (scope.idEntity || scope.nameEntity || "").toString() );
+                        return StorageService.isFavorite( scope.storageKey, (scope.idEntity || scope.nameEntity || "").toString() );
                     } else{
                         return false;
                     }
                 };
                 scope.setFavorite = function() {
+                    debugger
                     if(this.storagePermitted()){
-                        StorageService.setFavorite( scope.dataType, (scope.idEntity || scope.nameEntity || "").toString() );
+                        StorageService.setFavorite( scope.storageKey, (scope.idEntity || scope.nameEntity || "").toString() );
                     }
                 };
 
                 scope.removeFromFavorites = function() {
+                    debugger
                     if(this.storagePermitted()){
-                        StorageService.removeFavorite( scope.dataType, (scope.idEntity || scope.nameEntity || "").toString() );
+                        StorageService.removeFavorite( scope.storageKey, (scope.idEntity || scope.nameEntity || "").toString() );
                     }
                 };
 

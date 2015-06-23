@@ -2,7 +2,10 @@
 
     <h3>
         <span>{{ ::band.name }}</span>
-        <favoritos id-entity="band.id" name-entity="band.name" data-type="band"></favoritos>
+        <span class="right-aligned">
+            <favoritos id-entity="band.id" name-entity="band.name" storage-key="'bands'"></favoritos>
+            <button type="button" class="btn btn-default">Wikipedia</button>
+        </span>
     </h3>
 
     <h5>Origen: {{ ::band.origin }}</h5>

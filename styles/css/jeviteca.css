@@ -2,6 +2,9 @@
 .bold{
     font-weight: bold;
 }
+.right-aligned{
+    float: right;
+}
 .list-number-of-albums-subtitle{
     color: #777;
     font-size: small;
@@ -43,7 +46,8 @@
     margin-top: 25px;
 }
 .album-front{
-    float: left;
+
+    /*float: left;*/
     padding: 4px;
     margin-bottom: 20px;
     line-height: 1.42857143;

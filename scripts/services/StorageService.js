@@ -4,37 +4,31 @@
 angular
     .module("jeviteca")
     .service("StorageService", [function () {
-        this.isFavorite = function ( dataType, value ) {
-            if (typeof(Storage) !== "undefined") {
-                var favorites = localStorage.getItem( dataType );
-                if (favorites){
-                    return favorites.indexOf(value) > -1;
-                }else{
-                    return false;
-                }
-            } else{
+        this.isFavorite = function ( storageKey, value ) {
+            var favorites = localStorage.getItem( storageKey );
+            if (favorites){
+                return favorites.indexOf(value) > -1;
+            }else{
                 return false;
             }
         }
-        this.setFavorite = function ( dataType, value ) {
-            if (typeof(Storage) !== "undefined") {
-                var favoritesString = localStorage.getItem( dataType );
-                var favorites = [];
-                if (favoritesString){
-                    favorites = favoritesString.split(",");
-                }
-                favorites.push(value);
-                localStorage.setItem( dataType, favorites.join(",") );
+        this.setFavorite = function ( storageKey, value ) {
+            var favoritesString = localStorage.getItem( storageKey );
+            debugger
+            var favorites = [];
+            if (favoritesString){
+                favorites = favoritesString.split(",");
             }
+            favorites.push(value);
+            localStorage.setItem( storageKey, favorites.join(",") );
         };
-        this.removeFavorite = function ( dataType, value ) {
-            if (typeof(Storage) !== "undefined") {
-                var favorites = localStorage.getItem( dataType).split(",");
-                var index = favorites.indexOf(value);
-                if (index > -1){
-                    favorites.splice(index, 1);
-                    localStorage.setItem( dataType, favorites.join(",") );
-                }
+        this.removeFavorite = function ( storageKey, value ) {
+            var favorites = localStorage.getItem( storageKey ).split(",");
+            debugger
+            var index = favorites.indexOf( value );
+            if (index > -1){
+                favorites.splice(index, 1);
+                localStorage.setItem( storageKey, favorites.join(",") );
             }
         };
     }]);
