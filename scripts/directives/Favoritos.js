@@ -16,7 +16,6 @@ angular
             link: function(scope) {
 
                 scope.isFavorite = function () {
-                    debugger
                     if(this.storagePermitted()){
                         return StorageService.isFavorite( scope.storageKey, (scope.idEntity || scope.nameEntity || "").toString() );
                     } else{
@@ -24,14 +23,12 @@ angular
                     }
                 };
                 scope.setFavorite = function() {
-                    debugger
                     if(this.storagePermitted()){
                         StorageService.setFavorite( scope.storageKey, (scope.idEntity || scope.nameEntity || "").toString() );
                     }
                 };
 
                 scope.removeFromFavorites = function() {
-                    debugger
                     if(this.storagePermitted()){
                         StorageService.removeFavorite( scope.storageKey, (scope.idEntity || scope.nameEntity || "").toString() );
                     }

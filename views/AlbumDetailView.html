@@ -18,13 +18,7 @@
         <div id="album-list-panel-body" class="panel-body">
             <table class="table table-striped">
                 <tbody>
-                <tr ng-repeat="track in album.tracklist">
-                    <td>
-                        <div>{{ ::track }}</div>
-                    </td>
-                    <td>
-                        <span class="glyphicon glyphicon-play-circle" ng-click="openVideoClip"></span>
-                    </td>
+                <tr tracklist-table-element ng-repeat="track in album.tracklist" track-name="track" band-name="album.band.name">
                 </tr>
                 </tbody>
             </table>
