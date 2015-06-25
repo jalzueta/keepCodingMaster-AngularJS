@@ -1,6 +1,10 @@
 <div id="album-list-panel" class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Bandas</h3>
+        <span class="input-group filter-group">
+            <span class="input-group-addon" id="basic-addon1">Filtar</span>
+            <input type="text" ng-model="filtroBandValue" ng-model-options="{ debounce: 1000 }" class="form-control" placeholder="Band name..." aria-describedby="basic-addon1">
+        </span>
     </div>
     <div id="album-list-panel-body" class="panel-body">
         <table class="table table-striped, album-list-table">

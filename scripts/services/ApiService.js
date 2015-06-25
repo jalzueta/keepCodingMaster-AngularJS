@@ -8,12 +8,30 @@ angular
             return $http.get(url);
         };
 
-        this.getFilteredData = function ( url, searchString ) {
+        this.getFilteredData = function ( url, searchStrings ) {
             var deferred = $q.defer();
             $http.get(url).then(function (data) {
 
-                if(searchString){
-                    var filteredData = $filter('filter')(data.data,searchString,true);
+                if(searchStrings){
+                    var filteredData = Array();
+                    angular.forEach(searchStrings,function(searchString,index){
+                        filteredData = filteredData.concat($filter('filter')(data.data,searchString,function(actual, expected){
+                            /*actual === expected;*/
+                            if(expected !== undefined){
+                                if((actual !== undefined)){
+                                    if(actual.toString().toLowerCase().includes(expected.toString().toLowerCase())){
+                                        return true;
+                                    }else{
+                                        return false;
+                                    }
+                                }else{
+                                    return false;
+                                }
+                            }else{
+                                return true;
+                            }
+                        }));
+                    });
                     deferred.resolve(filteredData);
                 }else{
                     deferred.resolve(data.data);
