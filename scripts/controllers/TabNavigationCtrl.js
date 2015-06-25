@@ -6,14 +6,14 @@ angular
     .controller("TabNavigationCtrl", ["$scope", "$routeSegment", function($scope, $routeSegment){
 
         $scope.pathIsAlbums = function () {
-            return $routeSegment.startsWith("albums");
+            return $routeSegment.startsWith("album");
         };
 
         $scope.pathIsBands = function () {
-            return $routeSegment.startsWith("bands");
+            return $routeSegment.startsWith("band");
         };
 
         $scope.pathIsGenres = function () {
-            return $routeSegment.startsWith("genres");
+            return $routeSegment.startsWith("genre");
         };
     }]);
