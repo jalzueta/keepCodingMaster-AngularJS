@@ -5,9 +5,14 @@ header{
 #header{
     margin-top: 20px;
     padding-top: 0px;
-    background: ;
 }
-#header h1, h4, h5{
+#header h1{
+    text-align: center;
+}
+#header h4{
+    text-align: center;
+}
+#header h5{
     text-align: center;
 }
 .bold{
@@ -50,7 +55,7 @@ header{
 
 .album-thumbnail{
     width: 70px;
-    max-height: auto;
+    height: auto;
     padding: 4px;
     line-height: 1.42857143;
     background-color: #fff;
@@ -71,6 +76,33 @@ header{
 }
 .album-favorite{
     margin-top: 25px;
+}
+.album-rating-group{
+    width: 95px;
+    padding: 10px 5px 5px 10px;
+    margin-bottom: 0px;
+    margin-top: 17px;
+}
+.album-detail-header{
+    margin-bottom: 15px;
+}
+.album-detail-rating-group{
+    height: 40px;
+}
+.stars-group-detail{
+    width: 105px;
+    padding: 10px 5px 5px 10px;
+    margin-left: 10px;
+}
+.album-rating-subtitle{
+    font-size: 16px;
+    margin-top: -5px;
+    padding-left: 10px;
+    text-align: center;
+    color: #999999;
+}
+.album-rating-star{
+    padding-top: 10px;
 }
 .album-front{
 

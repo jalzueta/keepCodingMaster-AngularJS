@@ -1,9 +1,18 @@
 <article>
 
-    <h3>
+    <h3 class="album-detail-header">
         <span>{{ ::album.title }} ({{ ::album.year }})</span>
         <favoritos id-entity="album.id" name-entity="album.name" storage-key="'albums'"></favoritos>
     </h3>
+    <div class="album-detail-rating-group">
+        <span class="well stars-group-detail">
+            <span class="album-rating-stars"><rating ng-model="rate" max="5" readonly="isReadonly"
+                                                     on-hover="hoveringOver(value)"
+                                                     on-leave="overStar = null"></rating>
+            </span>
+        </span>
+        <i class="album-rating-subtitle">(Rating)</i>
+    </div>
     <div class="well">
         <p>Banda: <span class="bold"><a ng-href="#bands/{{ ::album.band.name }}/detail">{{ ::album.band.name }}</a></span></p>
         <p>Género: <span class="bold"><a ng-href="#genres/{{ ::album.genre.name }}/detail">{{ ::album.genre.name }}</a></span></p>

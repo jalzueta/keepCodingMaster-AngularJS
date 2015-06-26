@@ -14,4 +14,10 @@
             <favoritos id-entity="model.id" name-entity="model.name" storage-key="'albums'"></favoritos>
         </div>
     </td>
+    <td>
+        <div class="well album-rating-group">
+            <rating ng-model="rate" max="5" readonly="true" on-hover="hoveringOver(value)"
+                    on-leave="overStar = null"></rating>
+        </div>
+    </td>
 </tr>
