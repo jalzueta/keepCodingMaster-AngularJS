@@ -16,7 +16,9 @@ angular
 
                 scope.isRate = function(value) {
                     if(this.storagePermitted()){
-                        return value <= StorageService.getRate(scope.idEntity);
+                        var rate = StorageService.getRate(scope.idEntity);
+                        debugger
+                        return value <= rate;
                     }
                     return false;
                 };

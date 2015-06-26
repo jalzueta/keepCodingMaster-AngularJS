@@ -32,37 +32,45 @@ angular
         };
         this.getRate = function ( id ) {
             var ratesString = localStorage.getItem( "rates" );
-            var rates = [];
+            var rateToReturn = 0;
             if (ratesString){
-                rates = ratesString.split(";");
+                var rates = ratesString.split(",");
+                angular.forEach(rates, function(rate, index){
+                    var indexOfSeparator = rate.indexOf(":");
+                    if( indexOfSeparator !== -1){
+                        var auxId = rate.slice(0,indexOfSeparator);
+                        if(auxId == id){
+                            rateToReturn = parseInt(rate.slice(indexOfSeparator + 1));
+                        }
+                    }
+                });
             }
-            /*angular.forEach*/
-            if (rates){
-                return 3;
-            }else{
-                return 2;
-            }
-        }
+            debugger
+            return rateToReturn;
+        };
 
         this.setRate = function ( id, value ) {
-            debugger
             var ratesString = localStorage.getItem( "rates" );
             var rates;
             if (ratesString){
-                rates = ratesString.split(";");
+                rates = ratesString.split(",");
             }else{
                 rates = [];
             }
             var updated = false;
             angular.forEach(rates, function(rate, index){
-                if(rate.indexOf("id: " + id) !== -1){
-                    rates.remove();
-                    updated = true;
+                var indexOfSeparator = rate.indexOf(":");
+                if( indexOfSeparator !== -1){
+                    var auxId = rate.slice(0,indexOfSeparator);
+                    if(auxId == id){
+                        updated = true;
+                        rates[index] = id + ':' + value;
+                    }
                 }
             });
             if(!updated){
-                rates.push('{id: ' + id + ', value: ' + value + '}');
+                rates.push(id + ':' + value);
             }
-            localStorage.setItem( "rates", rates.join(";") );
-        }
+            localStorage.setItem( "rates", rates.join(",") );
+        };
     }]);
