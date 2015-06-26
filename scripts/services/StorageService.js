@@ -13,6 +13,7 @@ angular
             }
         }
         this.setFavorite = function ( storageKey, value ) {
+            debugger
             var favoritesString = localStorage.getItem( storageKey );
             var favorites = [];
             if (favoritesString){
@@ -29,4 +30,39 @@ angular
                 localStorage.setItem( storageKey, favorites.join(",") );
             }
         };
+        this.getRate = function ( id ) {
+            var ratesString = localStorage.getItem( "rates" );
+            var rates = [];
+            if (ratesString){
+                rates = ratesString.split(";");
+            }
+            /*angular.forEach*/
+            if (rates){
+                return 3;
+            }else{
+                return 2;
+            }
+        }
+
+        this.setRate = function ( id, value ) {
+            debugger
+            var ratesString = localStorage.getItem( "rates" );
+            var rates;
+            if (ratesString){
+                rates = ratesString.split(";");
+            }else{
+                rates = [];
+            }
+            var updated = false;
+            angular.forEach(rates, function(rate, index){
+                if(rate.indexOf("id: " + id) !== -1){
+                    rates.remove();
+                    updated = true;
+                }
+            });
+            if(!updated){
+                rates.push('{id: ' + id + ', value: ' + value + '}');
+            }
+            localStorage.setItem( "rates", rates.join(";") );
+        }
     }]);

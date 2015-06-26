@@ -16,8 +16,9 @@
     </td>
     <td>
         <div class="well album-rating-group">
-            <rating ng-model="rate" max="5" readonly="true" on-hover="hoveringOver(value)"
-                    on-leave="overStar = null"></rating>
+            <!--<not-my-rating ng-model="rate" max="5" readonly="true" on-hover="hoveringOver(value)"
+                    on-leave="overStar = null" id-entity="model.id"></not-my-rating>-->
+            <rating id-entity="album.id" read-only="true"></rating>
         </div>
     </td>
 </tr>

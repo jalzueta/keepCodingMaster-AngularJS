@@ -5,7 +5,7 @@ angular
     .module("jeviteca")
     .controller("GenreDetailCtrl", ["$scope", "ApiService", "Settings", "$routeParams", function( $scope, ApiService, Settings, $routeParams ){
 
-        ApiService.getFilteredData(Settings.genresUrl, {'name': $routeParams.name}).then(
+        ApiService.getExactFilterData(Settings.genresUrl, {'name': $routeParams.name}).then(
             function (data) {
 
                 if (Object.prototype.toString.call( data ) === '[object Array]'){

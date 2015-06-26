@@ -5,7 +5,7 @@ angular
     .module("jeviteca")
     .controller("BandDetailCtrl", ["$scope", "ApiService", "Settings", "$routeParams", "UrlUtilsService", "$window", function( $scope, ApiService, Settings, $routeParams, UrlUtilsService, $window ){
 
-        ApiService.getFilteredData(Settings.bandsUrl, {'name': $routeParams.name}).then(
+        ApiService.getExactFilterData(Settings.bandsUrl, {'name': $routeParams.name}).then(
             function (data) {
 
                 if (Object.prototype.toString.call( data ) === '[object Array]'){

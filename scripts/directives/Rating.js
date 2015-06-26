@@ -1,91 +1,38 @@
 /**
  * Created by javi on 26/6/15.
  */
-angular.module('jeviteca')
-
-    .constant('ratingConfig', {
-        max: 5,
-        stateOn: null,
-        stateOff: null
-    })
-
-    .controller('RatingController', ['$scope', '$attrs', 'ratingConfig', function($scope, $attrs, ratingConfig) {
-        var ngModelCtrl  = { $setViewValue: angular.noop };
-
-        this.init = function(ngModelCtrl_) {
-            ngModelCtrl = ngModelCtrl_;
-            ngModelCtrl.$render = this.render;
-
-            ngModelCtrl.$formatters.push(function(value) {
-                if (angular.isNumber(value) && value << 0 !== value) {
-                    value = Math.round(value);
-                }
-                return value;
-            });
-
-            this.stateOn = angular.isDefined($attrs.stateOn) ? $scope.$parent.$eval($attrs.stateOn) : ratingConfig.stateOn;
-            this.stateOff = angular.isDefined($attrs.stateOff) ? $scope.$parent.$eval($attrs.stateOff) : ratingConfig.stateOff;
-
-            var ratingStates = angular.isDefined($attrs.ratingStates) ? $scope.$parent.$eval($attrs.ratingStates) :
-                new Array( angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : ratingConfig.max );
-            $scope.range = this.buildTemplateObjects(ratingStates);
-        };
-
-        this.buildTemplateObjects = function(states) {
-            for (var i = 0, n = states.length; i < n; i++) {
-                states[i] = angular.extend({ index: i }, { stateOn: this.stateOn, stateOff: this.stateOff }, states[i]);
-            }
-            return states;
-        };
-
-        $scope.rate = function(value) {
-            debugger
-            if ( !$scope.readonly && value >= 0 && value <= $scope.range.length ) {
-                ngModelCtrl.$setViewValue(value);
-                ngModelCtrl.$render();
-            }
-        };
-
-        $scope.enter = function(value) {
-            if ( !$scope.readonly ) {
-                $scope.value = value;
-            }
-            $scope.onHover({value: value});
-        };
-
-        $scope.reset = function() {
-            $scope.value = ngModelCtrl.$viewValue;
-            $scope.onLeave();
-        };
-
-        $scope.onKeydown = function(evt) {
-            if (/(37|38|39|40)/.test(evt.which)) {
-                evt.preventDefault();
-                evt.stopPropagation();
-                $scope.rate( $scope.value + (evt.which === 38 || evt.which === 39 ? 1 : -1) );
-            }
-        };
-
-        this.render = function() {
-            $scope.value = ngModelCtrl.$viewValue;
-        };
-    }])
-
-    .directive('rating', function() {
+angular
+    .module("jeviteca")
+    .directive("rating", ["StorageService", function (StorageService) {
         return {
-            restrict: 'EA',
-            require: ['rating', 'ngModel'],
-            scope: {
-                readonly: '=?',
-                onHover: '&',
-                onLeave: '&'
-            },
-            controller: 'RatingController',
-            templateUrl: 'views/RatingView.html',
+            restrict: "AE",
             replace: true,
-            link: function(scope, element, attrs, ctrls) {
-                var ratingCtrl = ctrls[0], ngModelCtrl = ctrls[1];
-                ratingCtrl.init( ngModelCtrl );
+            scope: {
+                idEntity: "=",
+                readOnly: "="
+            },
+            templateUrl: "views/RatingView.html",
+            link: function(scope) {
+
+                scope.isRate = function(value) {
+                    if(this.storagePermitted()){
+                        return value <= StorageService.getRate(scope.idEntity);
+                    }
+                    return false;
+                };
+
+                scope.setRate = function(value) {
+                    if(!scope.readOnly){
+                        if(this.storagePermitted()){
+                            StorageService.setRate( scope.idEntity.toString(), value );
+                        }
+                    }
+                };
+
+                scope.storagePermitted = function() {
+                    /*return true;*/
+                    return typeof(Storage) !== "undefined";
+                }
             }
         };
-    });
+    }]);
