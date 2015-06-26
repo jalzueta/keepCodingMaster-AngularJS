@@ -14,7 +14,6 @@ angular
         }
         this.setFavorite = function ( storageKey, value ) {
             var favoritesString = localStorage.getItem( storageKey );
-            debugger
             var favorites = [];
             if (favoritesString){
                 favorites = favoritesString.split(",");
@@ -24,7 +23,6 @@ angular
         };
         this.removeFavorite = function ( storageKey, value ) {
             var favorites = localStorage.getItem( storageKey ).split(",");
-            debugger
             var index = favorites.indexOf( value );
             if (index > -1){
                 favorites.splice(index, 1);

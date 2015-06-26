@@ -22,12 +22,12 @@
             <h5>Discografía:</h5>
         </div>
         <div id="album-list-panel-body" class="panel-body">
-            <table class="table table-striped">
+            <table class="table table-striped band-album-table">
                 <tbody>
                 <tr ng-repeat="album in band.albums">
-                    <!--<td>
+                    <td>
                         <img class="album-thumbnail" ng-src="img/{{ ::album.image }}" ng-alt="{{ ::album.title }}"/>
-                    </td>-->
+                    </td>
                     <td>
                         <div class="band-detail-album-title"><a ng-href="#albums/{{ ::album.id }}/detail">{{ ::album.title }} ({{ ::album.year}})</a></div>
                     </td>
@@ -36,7 +36,7 @@
                     </td>
                     <td>
                         <div class="band-detail-album-favorite">
-                            <favoritos id-entity="album.id" name-entity="album.name" data-type="album"></favoritos>
+                            <favoritos id-entity="album.id" name-entity="album.name" storage-key="'albums'"></favoritos>
                         </div>
                     </td>
                 </tr>

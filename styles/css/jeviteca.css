@@ -36,9 +36,7 @@
 #album-list-panel-body{
     padding: 0px;
 }
-.album-list-table{
-    margin: 0px;
-}
+
 .album-thumbnail{
     width: 70px;
     max-height: auto;
@@ -50,6 +48,9 @@
     -webkit-transition: border .2s ease-in-out;
     -o-transition: border .2s ease-in-out;
     transition: border .2s ease-in-out;
+}
+.album-table{
+    margin-bottom: 0px;
 }
 .album-title{
     margin-top: 15px;
@@ -74,8 +75,11 @@
     transition: border .2s ease-in-out;
 }
 .album-track-list{
-    float: left;
+    /*float: left;*/
     margin-left: 30px;
+}
+.tacklist-table{
+    margin-bottom: 0px;
 }
 
 
@@ -92,14 +96,17 @@
 .band-favorite{
     /*margin-top: 35px;*/
 }
+.band-album-table{
+    margin-bottom: 0px;
+}
 .band-detail-album-title{
-    margin-top: 3px;
+    margin-top: 25px;
 }
 .band-detail-album-genre{
-    margin-top: 3px;
+    margin-top: 25px;
 }
 .band-detail-album-favorite{
-    margin-top: 5px;
+    margin-top: 25px;
 }
 
 
