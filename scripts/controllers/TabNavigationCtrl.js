@@ -7,6 +7,13 @@ angular
 
         $scope.pathIsAlbums = function () {
             return $routeSegment.startsWith("album");
+            /*var isPath = false;
+            angular.forEach($routeSegment.chain,function(chain,index){
+                if(chain.name.indexOf("album") !== -1){
+                    isPath = true;
+                }
+            });
+            return isPath;*/
         };
 
         $scope.pathIsBands = function () {

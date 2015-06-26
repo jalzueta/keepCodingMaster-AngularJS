@@ -1,4 +1,15 @@
 
+header{
+    margin-bottom: 20px;
+}
+#header{
+    margin-top: 20px;
+    padding-top: 0px;
+    background: ;
+}
+#header h1, h4, h5{
+    text-align: center;
+}
 .bold{
     font-weight: bold;
 }
