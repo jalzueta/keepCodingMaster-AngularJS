@@ -26,7 +26,6 @@ angular
             $http.get(url).then(function (data) {
                 if(searchStrings){
                     var filteredData = Array();
-                    debugger
                     angular.forEach(searchStrings,function(searchString,index){
                         filteredData = filteredData.concat($filter('filter')(data.data,searchString,function(actual, expected){
                             /*actual === expected;*/

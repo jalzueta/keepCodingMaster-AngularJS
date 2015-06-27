@@ -69,7 +69,10 @@ header{
     margin-bottom: 0px;
 }
 .album-title{
-    margin-top: 15px;
+    margin-top: 25px;
+}
+.album-band{
+    margin-top: 25px;
 }
 .album-launching-date{
     margin-top: 25px;

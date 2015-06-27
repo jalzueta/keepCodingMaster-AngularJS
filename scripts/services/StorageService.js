@@ -3,7 +3,7 @@
  */
 angular
     .module("jeviteca")
-    .service("StorageService", [function () {
+    .service("StorageService", [ "Settings", function (Settings) {
         this.isFavorite = function ( storageKey, value ) {
             var favorites = localStorage.getItem( storageKey );
             if (favorites){
@@ -31,7 +31,7 @@ angular
             }
         };
         this.getRate = function ( id ) {
-            var ratesString = localStorage.getItem( "rates" );
+            var ratesString = localStorage.getItem( Settings.ratesStorageKey );
             var rateToReturn = 0;
             if (ratesString){
                 var rates = ratesString.split(",");
@@ -45,12 +45,11 @@ angular
                     }
                 });
             }
-            debugger
             return rateToReturn;
         };
 
         this.setRate = function ( id, value ) {
-            var ratesString = localStorage.getItem( "rates" );
+            var ratesString = localStorage.getItem( Settings.ratesStorageKey );
             var rates;
             if (ratesString){
                 rates = ratesString.split(",");
@@ -71,6 +70,6 @@ angular
             if(!updated){
                 rates.push(id + ':' + value);
             }
-            localStorage.setItem( "rates", rates.join(",") );
+            localStorage.setItem( Settings.ratesStorageKey, rates.join(",") );
         };
     }]);

@@ -6,10 +6,11 @@ angular
     .module("jeviteca")
     .filter("launchedOn", function () {
         return function ( year ) {
+            debugger
             if( year ){
-                return "Año de lanzamiento: " + year;
+                return "Año: " + year;
             }else{
-                return "Año de lanzamiento: no disponible";
+                return "Año: no disponible";
             }
 
         }

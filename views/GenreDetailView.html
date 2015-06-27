@@ -1,10 +1,8 @@
 <article>
-
     <h3>
         <span>{{ ::genre.name }}</span>
         <favoritos id-entity="genre.id" name-entity="genre.name" storage-key="'genres'"></favoritos>
     </h3>
-
     <div id="album-list-panel" class="panel panel-default">
         <div class="panel-heading">
             <h4>Álbumes:</h4>
@@ -12,47 +10,10 @@
         <div id="album-list-panel-body" class="panel-body">
             <table class="table table-striped">
                 <tbody>
-                <tr ng-repeat="album in genre.albums">
-                    <td>
-                        <img class="album-thumbnail" ng-src="img/{{ ::album.image }}" ng-alt="{{ ::album.title }}"/>
-                    </td>
-                    <td>
-                        <div class="band-detail-album-title"><a ng-href="#albums/{{ ::album.id }}/detail">{{ ::album.title }} ({{ ::album.year}})</a></div>
-                    </td>
-                    <td>
-                        <div class="band-detail-album-genre">{{ ::album.band.name }}</a></div>
-                    </td>
-                    <td>
-                        <div class="band-detail-album-favorite">
-                            <favoritos id-entity="album.id" name-entity="album.name" storage-key="'albums'"></favoritos>
-                        </div>
-                    </td>
+                <tr album-table-element ng-repeat="album in genre.albums" model="album">
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
-    <!--<h5>Álbumes:</h5>
-    <table class="table table-striped">
-        <tbody>
-        <tr ng-repeat="album in genre.albums">
-            &lt;!&ndash;<td>
-                <img class="album-thumbnail" ng-src="img/{{ ::album.image }}" ng-alt="{{ ::album.title }}"/>
-            </td>&ndash;&gt;
-            <td>
-                <div class="band-detail-album-title"><a ng-href="#albums/{{ ::album.id }}/detail">{{ ::album.title }} ({{ ::album.year}})</a></div>
-            </td>
-            <td>
-                <div class="band-detail-album-genre">{{ ::album.band.name }}</a></div>
-            </td>
-            <td>
-                <div class="band-detail-album-favorite">
-                    <favoritos id-entity="album.id" name-entity="album.name" data-type="album"></favoritos>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>-->
-
 </article>

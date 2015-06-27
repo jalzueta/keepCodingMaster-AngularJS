@@ -8,5 +8,6 @@ angular
         "bandsUrl": "data/bands.json",
         "genresUrl": "data/genres.json",
         "wikiBaseUrl": "https://es.wikipedia.org/wiki/Special:Search?search=",
-        "youtubeBaseUrl": "https://www.youtube.com/results?search_query="
+        "youtubeBaseUrl": "https://www.youtube.com/results?search_query=",
+        ratesStorageKey: "rates"
     });
